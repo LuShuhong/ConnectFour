@@ -30,7 +30,7 @@
             <id>github</id>
             <name>GitHub Packages</name>
             <!-- FIXME Fill in these properties -->
-            <url>https://maven.pkg.github.com/YOUR_GITHUB_USERNAME/YOUR_PROJECT_NAME</url>
+            <url>https://maven.pkg.github.com/LuShuhong/Just-to-win-the-prize</url>
         </repository>
     </distributionManagement>
 
