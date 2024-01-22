@@ -5,7 +5,7 @@
     <!-- do not change this -->
     <groupId>com.thg.accelerator.connectn.ai</groupId>
     <!-- do not change this -->
-    <artifactId>${justToWinThePrize}</artifactId>
+    <artifactId>${yourteam}</artifactId>
     <version>1.0</version>
 
     <repositories>
@@ -15,7 +15,7 @@
         </repository>
     </repositories>
 
-    <name>${justToWinThePrize}'s Connect N AI</name>
+    <name>${yourteam}'s Connect N AI</name>
 
     <properties>
         <!-- FIXME Fill in these properties - they need to be lowercase -->
