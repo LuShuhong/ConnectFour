@@ -23,11 +23,22 @@ public class JustToWinThePrize extends Player {
     Counter[][] gameBoard = BoardStealer.getBoard(board);
 
     ArrayList<Integer> availableColumn = new ArrayList<>();
-    for(int i=0; i<10;i++){
+    for(int i = 0; i < 10; i ++) {
       if(gameBoard[i][7] == null ){
         availableColumn.add(i);
       }
     }
+
+    //this needs to be adjusted with AI
+    for(int i = 1; i < 8; i ++) {
+      if(gameBoard[i][0] == gameBoard[i+1][0]){
+        if(gameBoard[i-1][0] ==null && gameBoard[i+2] == null) {
+          if(i<=5) return i+2;
+          else return i-1;
+        }
+      }
+    }
+
 
     Random rand = new Random();
     int randomElement = availableColumn.get(rand.nextInt(availableColumn.size()));
