@@ -31,7 +31,7 @@ public class JustToWinThePrize extends Player {
 
     //this needs to be adjusted with AI
     for(int i = 1; i < 8; i ++) {
-      if(gameBoard[i][0] == gameBoard[i+1][0]){
+      if(gameBoard[i][0].getStringRepresentation() == gameBoard[i+1][0].getStringRepresentation()){
         if(gameBoard[i-1][0] ==null && gameBoard[i+2] == null) {
           if(i<=5) return i+2;
           else return i-1;
