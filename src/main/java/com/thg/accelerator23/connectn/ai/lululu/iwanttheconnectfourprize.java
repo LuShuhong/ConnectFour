@@ -158,11 +158,13 @@ public class iwanttheconnectfourprize extends Player {
       }
     }
 
-    if(myCount == 4) score += 1000;
-    else if (myCount == 3 && opponentCount == 0) score += 50;
+    if(myCount == 4) score += 10000;
+    else if (myCount == 3 && opponentCount == 0) score += 100;
     else if (myCount == 2 && opponentCount == 0) score += 10;
 
-    if(opponentCount == 4) score -= 1000;
+    if(opponentCount == 4) score -= 10000;
+    else if (opponentCount == 3 && myCount == 0) score -=100;
+    else if (opponentCount == 2 && myCount == 0) score -=10;
 
     return score;
   }
