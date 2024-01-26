@@ -12,7 +12,7 @@ public class iwanttheconnectfourprize extends Player {
     super(counter, iwanttheconnectfourprize.class.getName());
   }
 
-  public static final int maxDepth = 5;
+  public static final int maxDepth = 6;
 
   //upon testing, the ai doesn't know to start at tge beginning, thus hard code to if first to play
   public boolean isFirstMove(Counter[][] gameBoard) {
@@ -90,6 +90,7 @@ public class iwanttheconnectfourprize extends Player {
             Board newBoard = new Board(board, i, this.getCounter());
             int eval = minimax(newBoard, depth +1, false, alpha, beta);
             maxEval = Math.max(maxEval,eval);
+            alpha = Math.max(alpha,eval);
             if(beta <= alpha) break;
         } catch (InvalidMoveException e) {
         }
