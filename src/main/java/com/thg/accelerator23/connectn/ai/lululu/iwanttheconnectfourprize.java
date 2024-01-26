@@ -33,7 +33,6 @@ public class iwanttheconnectfourprize extends Player {
     //check isFirstmove comment
     if(isFirstMove(gameBoard)) return 5;
 
-
     //this needs to be adjusted with AI
     //if two columns with the same tokens, block or continue from it
 //    for(int i = 1; i < 8; i ++) {
@@ -51,7 +50,7 @@ public class iwanttheconnectfourprize extends Player {
 //      if
 //    }
 
-    int bestMove = -1;
+    int bestMove = 4;
     int bestValue = Integer.MIN_VALUE;
     for(int i = 0; i < 10 ; i ++) {
       try{
@@ -66,7 +65,6 @@ public class iwanttheconnectfourprize extends Player {
     }
 
     //this is a fallback, comment out in testing, but can add in real game
-
     Random rand = new Random();
     ArrayList<Integer> availableColumn = new ArrayList<>();
     for(int i = 0; i < 10; i ++) {
@@ -120,18 +118,21 @@ public class iwanttheconnectfourprize extends Player {
     int score = 0;
     Counter opponentCounter = myCounter.getOther();
 
+    //highly inefficient, how to improve?
     for(int i = 0; i < 10; i++) {
       for(int j = 0; j < 8; j ++){
         Position currentPosition = new Position(i,j);
-        if(board.isWithinBoard(currentPosition)) {
-          Counter currentCounter = board.getCounterAtPosition(currentPosition);
+      //  if(board.isWithinBoard(currentPosition)) {
+       //   Counter currentCounter = board.getCounterAtPosition(currentPosition);
 
-          //is there way to modify this? it checks horizontal, vertical and diagonal each time
+        //is there way to modify this? it checks horizontal, vertical and diagonal each time
+        //top row don't need to check 2nd and 3rd conditions
+        //most right column don't need to check 1st, 3rd, 4th conditions
           score += evaluateLine(board, currentPosition, 1,0, myCounter,opponentCounter);
           score += evaluateLine(board, currentPosition, 0,1, myCounter,opponentCounter);
           score += evaluateLine(board, currentPosition, 1,1, myCounter,opponentCounter);
           score += evaluateLine(board, currentPosition, 1,-1, myCounter,opponentCounter);
-        }
+   //     }
       }
     }
     return score;
@@ -163,8 +164,8 @@ public class iwanttheconnectfourprize extends Player {
     else if (myCount == 2 && opponentCount == 0) score += 10;
 
     if(opponentCount == 4) score -= 10000;
-    else if (opponentCount == 3 && myCount == 0) score -=100;
-    else if (opponentCount == 2 && myCount == 0) score -=10;
+    else if (opponentCount == 3 && myCount == 0) score -=77;
+    else if (opponentCount == 2 && myCount == 0) score -=7;
 
     return score;
   }
