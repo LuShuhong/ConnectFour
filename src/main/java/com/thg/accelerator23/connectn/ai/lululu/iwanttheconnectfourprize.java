@@ -14,6 +14,15 @@ public class iwanttheconnectfourprize extends Player {
 
   public static final int maxDepth = 5;
 
+  //upon testing, the ai doesn't know to start at tge beginning, thus hard code to if first to play
+  public boolean isFirstMove(Counter[][] gameBoard) {
+    for(int i = 0; i < 10; i++) {
+      if(gameBoard[i][0]!= null) return false;
+    }
+    return true;
+  }
+
+
   @Override
   public int makeMove(Board board) {
     //TODO: some crazy analysis
@@ -21,6 +30,8 @@ public class iwanttheconnectfourprize extends Player {
     Counter counter = this.getCounter();
     Counter[][] gameBoard = board.getCounterPlacements();
 
+    //check isFirstmove comment
+    if(isFirstMove(gameBoard)) return 5;
 
 
     //this needs to be adjusted with AI
