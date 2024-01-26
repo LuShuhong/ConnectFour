@@ -12,7 +12,7 @@ public class iwanttheconnectfourprize extends Player {
     super(counter, iwanttheconnectfourprize.class.getName());
   }
 
-  public static final int maxDepth = 4;
+  public static final int maxDepth = 5;
 
   @Override
   public int makeMove(Board board) {
@@ -22,12 +22,6 @@ public class iwanttheconnectfourprize extends Player {
     Counter[][] gameBoard = board.getCounterPlacements();
 
 
-    ArrayList<Integer> availableColumn = new ArrayList<>();
-    for(int i = 0; i < 10; i ++) {
-      if(gameBoard[i][7] == null ){
-        availableColumn.add(i);
-      }
-    }
 
     //this needs to be adjusted with AI
     //if two columns with the same tokens, block or continue from it
@@ -41,9 +35,6 @@ public class iwanttheconnectfourprize extends Player {
 //        }
 //      }
 //    }
-
-    Random rand = new Random();
-    int randomElement = availableColumn.get(rand.nextInt(availableColumn.size()));
 
 //    for(int i: availableColumn){
 //      if
@@ -60,12 +51,22 @@ public class iwanttheconnectfourprize extends Player {
           bestValue = moveValue;
         }
       } catch (InvalidMoveException e) {
-        //deliberately not doing anything, but probably not good
       }
     }
 
     //this is a fallback, comment out in testing, but can add in real game
-    //if(bestMove == -1) return randomElement;
+
+    Random rand = new Random();
+    ArrayList<Integer> availableColumn = new ArrayList<>();
+    for(int i = 0; i < 10; i ++) {
+      if(board.getCounterAtPosition(new Position(i,0)) == null ){
+        availableColumn.add(i);
+      }
+    }
+    int randomElement = availableColumn.get(rand.nextInt(availableColumn.size()));
+    if(bestMove == -1) {
+      return randomElement;
+    }
 
     return bestMove;
 
